@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 type Reps struct {
@@ -57,12 +58,7 @@ type Reps struct {
 
 func formatResults(reps *Reps) {
 	for _, rep := range reps.Results {
-		if *rep.Chamber == "senate" {
-			*rep.Chamber = "Senate"
-		}
-		if *rep.Chamber == "house" {
-			*rep.Chamber = "House"
-		}
+		*rep.Chamber = strings.Title(*rep.Chamber)
 	}
 }
 
