@@ -1,4 +1,4 @@
-FROM golang:alpine
+FROM golang:latest
 
 # Create the directory where the application will reside
 RUN mkdir /app
