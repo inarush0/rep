@@ -19,13 +19,9 @@ func main() {
 }
 
 func index(writer http.ResponseWriter, request *http.Request) {
-	page := "index.gohtml"
 	zip := request.FormValue("zip")
 	reps := zipLookup(zip)
-	if zip != "" {
-		page = "results.gohtml"
-	}
-	err := templates.ExecuteTemplate(writer, page, reps.Results)
+	err := templates.ExecuteTemplate(writer, "index.gohtml", reps.Results)
 	if err != nil {
 		http.Error(writer, err.Error(), 500)
 		log.Fatalln(err)
